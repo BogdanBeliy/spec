@@ -1,11 +1,8 @@
 from django.urls import path, include
-from rest_framework.authtoken import views
-
-from account.views import UserAPIViewset
+from account import views
 
 urlpatterns = [
-    path('auth/', views.obtain_auth_token),
-    path('create/', UserAPIViewset.as_view({'post': 'create'}))
-    # path('detail/')
-    # path('delete/')
+    path('register/', views.user_create),
+    path('detail/<int:pk>/', views.user_detail, name='user_detail'),
+    path('delete/<int:pk>/', views.user_delete, name='user_detail'),
 ]

@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     # installed apps
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     'djoser',
     'silk',
-    'rest_framework_simplejwt',
     # created apps
     'account.apps.AccountConfig',
 
@@ -94,13 +94,16 @@ DATABASES = {
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+
     ),
     'DEFAULT_FILTER_BACKEND': (
         'django_filter.rest_framework.DjangoFilterBackend',
     ),
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
 }
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=5),

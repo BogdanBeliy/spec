@@ -8,3 +8,4 @@ class Organization(DateAbstractModel):
     personal_area = models.OneToOneField(PersonalArea, on_delete=models.CASCADE)
 
 
+
